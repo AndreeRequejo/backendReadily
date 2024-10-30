@@ -4,6 +4,7 @@
 ```
 python3 -m venv .venv
 .venv\Scripts\activate
+$env:PYTHONDONTWRITEBYTECODE=1
 ```
 
 ## Dependencias

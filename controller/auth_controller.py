@@ -1,20 +1,20 @@
-import services.lector_service as lector_service
-import models.Lector as modelLector
+import services.usuario_service as usuario_service
+import models.Usuario as modelUsuario
 
-def authenticate(email, password):
+def authenticate(username, password):
     try:
-        lector = lector_service.obtener_lector(email)
-        reader = modelLector.Lector(lector[0], lector[1], lector[2], lector[3], lector[4], lector[5], lector[6])
-        if reader and reader.pws_lec == password:
-            return reader
+        usuario = usuario_service.obtener_usuario(username)
+        user = modelUsuario.Usuario(usuario[0], username, usuario[2])
+        if user and user.pws_lec == password:
+            return user
     except:
         return None
     
 def identity(payload):
     try:
-        lector_id = payload['identity']
-        lector = lector_service.obtener_credenciales(lector_id)
-        reader = modelLector.Lector(lector[0], lector[1], lector[2], lector[3], lector[4], lector[5], lector[6])
-        return reader
+        user_id = payload['identity']
+        usuario = usuario_service.obtener_credenciales(user_id)
+        user = modelUsuario.Usuario(user_id, usuario[1], usuario[2])
+        return user
     except:
         return None
