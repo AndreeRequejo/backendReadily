@@ -10,7 +10,7 @@ $env:PYTHONDONTWRITEBYTECODE=1
 ## Dependencias
 ```
 pip install Flask==2.3.3
-pip install Flask JWT
+pip install flask-jwt-extended
 pip install PyMySql
 ```
 

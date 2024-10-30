@@ -1,20 +1,29 @@
-import services.usuario_service as usuario_service
-import models.Usuario as modelUsuario
+from flask import jsonify, request
+from flask_jwt_extended import create_access_token, get_jwt_identity
 
-def authenticate(username, password):
+# Importación de servicios
+import services.usuario_service as usuario_service
+# Importación de modelos
+from models.Usuario import Usuario
+
+def auth():
+    # Body del Request
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    # Validar credenciales del usuario
     try:
-        usuario = usuario_service.obtener_usuario(username)
-        user = modelUsuario.Usuario(usuario[0], username, usuario[2])
-        if user and user.pws_lec == password:
-            return user
-    except:
-        return None
+        usuario = usuario_service.obtener_usuario(email)
+        if usuario and (usuario[1] == email and usuario[2] == password):
+            user = Usuario(usuario[0], email, password)
+            access_token = create_access_token(identity = user.email_user)
+            return jsonify(access_token = access_token), 200
+        else:
+            return jsonify({"msg": "Credenciales incorrectas"}), 401
+    except Exception as e:
+        print("Error en autenticación:", e)
+        return jsonify({"msg": "Error durante autenticación"}), 500 
     
-def identity(payload):
-    try:
-        user_id = payload['identity']
-        usuario = usuario_service.obtener_credenciales(user_id)
-        user = modelUsuario.Usuario(user_id, usuario[1], usuario[2])
-        return user
-    except:
-        return None
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200

@@ -9,10 +9,9 @@ def obtener_usuario(email):
                 usuario = cursor.fetchone()
         return usuario
     except Exception as e:
-        print(repr(e))
         return None
     
-def obtener_credenciales(id):
+def obtener_usuario_id(id):
     try:
         conexion = db.obtener_conexion()
         usuario = None
@@ -23,5 +22,17 @@ def obtener_credenciales(id):
                 usuario = cursor.fetchone()
         return usuario
     except Exception as e:
-        print(repr(e))
+        return None
+    
+def insertar_usuario(email_user, pass_user):
+    try:
+        conexion = db.obtener_conexion()
+        with conexion.cursor() as cursor:
+            cursor.execute("INSERT INTO usuario (email_user, pass_user VALUES (%s, %s)",
+                            (email_user, pass_user))
+            user_id = cursor.lastrowid
+        conexion.commit()
+        
+        return user_id
+    except Exception as e:
         return None
