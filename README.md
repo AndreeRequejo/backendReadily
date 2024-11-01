@@ -17,6 +17,7 @@ pip install bcrypt
 
 ## Iniciar Proyecto
 ```
+set FLASK_ENV=development
 flask --app main run
 ```
 
