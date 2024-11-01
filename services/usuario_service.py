@@ -24,15 +24,15 @@ def obtener_usuario_id(id):
     except Exception as e:
         return None
     
-def insertar_usuario(email_user, pass_user):
+def registrar_usuario(email_user, pass_user):
     try:
         conexion = db.obtener_conexion()
         with conexion.cursor() as cursor:
-            cursor.execute("INSERT INTO usuario (email_user, pass_user VALUES (%s, %s)",
+            cursor.execute("INSERT INTO usuario (email_user, pass_user) VALUES (%s, %s)",
                             (email_user, pass_user))
-            user_id = cursor.lastrowid
+            id_user = cursor.lastrowid
         conexion.commit()
         
-        return user_id
+        return id_user
     except Exception as e:
         return None

@@ -12,6 +12,7 @@ $env:PYTHONDONTWRITEBYTECODE=1
 pip install Flask==2.3.3
 pip install flask-jwt-extended
 pip install PyMySql
+pip install bcrypt
 ```
 
 ## Iniciar Proyecto

@@ -8,3 +8,12 @@ class Lector(object):
 
     def __str__(self):
         return "Lector(dni='%s')" % self.dni_lec
+    
+    def json(self):
+        return {
+            "dni_lec": self.dni_lec,
+            "nom_lec": self.nom_lec,
+            "apellidos_lec": self.apellidos_lec,
+            "fecha_nac": self.fecha_nac,
+            "user_id": self.user_id
+        }
