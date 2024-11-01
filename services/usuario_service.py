@@ -9,6 +9,7 @@ def obtener_usuario(email):
                 usuario = cursor.fetchone()
         return usuario
     except Exception as e:
+        print("Error: ", e)
         return None
     
 def obtener_usuario_id(id):
@@ -35,4 +36,5 @@ def registrar_usuario(email_user, pass_user):
         
         return id_user
     except Exception as e:
+        print("Error: ", e)
         return None

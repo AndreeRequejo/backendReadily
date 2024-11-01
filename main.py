@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_jwt_extended import jwt_required, JWTManager
 # Import Controladores
 import controller.auth_controller as auth_controller
@@ -24,6 +24,11 @@ def protected():
 @app.route("/api_registrarusuario", methods=["POST"])
 def register():
     return usuario_controller.registrarUsuario()
+
+@app.route("/")
+def home():
+    valor = "Grupo 01"
+    return f"<p>Bienvenido, {valor}</p>"
 
 #! Iniciar el servidor
 if __name__ == "__main__":

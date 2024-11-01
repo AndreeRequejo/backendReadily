@@ -9,6 +9,7 @@ def obtener_lector_id(dni):
                 lector = cursor.fetchone()
         return lector
     except Exception as e:
+        print("Error: ", e)
         return None
 
 def registrar_lector(dni_lec, nom_lec, apellidos_lec, fecha_nac, id_user):
@@ -19,4 +20,5 @@ def registrar_lector(dni_lec, nom_lec, apellidos_lec, fecha_nac, id_user):
                             (dni_lec, nom_lec, apellidos_lec, fecha_nac, id_user))
         conexion.commit()
     except Exception as e:
+        print("Error: ", e)
         return None
