@@ -133,7 +133,7 @@ def payment_sheet(total):
   return jsonify(paymentIntent=paymentIntent.client_secret,
                  ephemeralKey=ephemeralKey.secret,
                  customer=customer.id,
-                 publishableKey='pk_test_51QHKyXFdiHiEvruaKwNZTzTpH7JAHrq56oyABgbdCMg45uKNyRHsYlZEqRbnrxLozxMOj3MPnoNxrNyiMKcTBwHS00fHRKd1mw')
+                 publishableKey='')
 
 #! Iniciar el servidor
 if __name__ == "__main__":
