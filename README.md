@@ -13,6 +13,9 @@ pip install Flask==2.3.3
 pip install flask-jwt-extended
 pip install PyMySql
 pip install bcrypt
+pip install stripe
+pip install firebase-admin
+pip install google-api-python-client
 ```
 
 ## Iniciar Proyecto
