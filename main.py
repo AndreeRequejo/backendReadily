@@ -109,7 +109,7 @@ def obtener_dni_lec():
         return jsonify({"code": 1, "msg": f"Error al obtener el dni_lec: {str(e)}"}), 500
 
 
-stripe.api_key = 'sk_test_51QHKyXFdiHiEvruaa286caCofTZW9VWQCfHWGdwIobD8cRqoa8oL0GGZsm3imBMcZgGl8hwllKu6UsPDZUWWBH8f00wK5e3PV4'
+stripe.api_key = ''
 
 @app.route('/payment-sheet/<int:total>', methods=['POST'])
 def payment_sheet(total):
